@@ -1784,7 +1784,7 @@ void OBSBasicSettings::LoadSimpleOutputSettings()
 
 	// restrict list of bitrates when multichannel is OFF
 	if (!IsSurround(speakers))
-		RestrictResetBitrates({ui->simpleOutputABitrate}, 320);
+		RestrictResetBitrates({ui->simpleOutputABitrate}, 1024);
 
 	SetComboByName(ui->simpleOutputABitrate,
 		       std::to_string(audioBitrate).c_str());
@@ -2135,7 +2135,7 @@ void OBSBasicSettings::LoadAdvOutputAudioSettings()
 
 	// restrict list of bitrates when multichannel is OFF
 	const char *speakers =
-		config_get_string(main->Config(), "Audio", "ChannelSetup");
+		 config_get_string(main->Config(), "Audio", "ChannelSetup");
 
 	// restrict list of bitrates when multichannel is OFF
 	if (!IsSurround(speakers)) {
@@ -2143,7 +2143,7 @@ void OBSBasicSettings::LoadAdvOutputAudioSettings()
 			{ui->advOutTrack1Bitrate, ui->advOutTrack2Bitrate,
 			 ui->advOutTrack3Bitrate, ui->advOutTrack4Bitrate,
 			 ui->advOutTrack5Bitrate, ui->advOutTrack6Bitrate},
-			320);
+			1024);
 	}
 
 	SetComboByName(ui->advOutTrack1Bitrate,
@@ -4217,7 +4217,7 @@ void OBSBasicSettings::SpeakerLayoutChanged(int idx)
 			 ui->advOutTrack2Bitrate, ui->advOutTrack3Bitrate,
 			 ui->advOutTrack4Bitrate, ui->advOutTrack5Bitrate,
 			 ui->advOutTrack6Bitrate},
-			320);
+			1024);
 
 		SaveCombo(ui->simpleOutputABitrate, "SimpleOutput", "ABitrate");
 		SaveCombo(ui->advOutTrack1Bitrate, "AdvOut", "Track1Bitrate");
